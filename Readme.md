@@ -3,7 +3,7 @@
 
   read part of a file
 
-## Getting Started
+## Installation
 
 _With npm_  
 
@@ -12,16 +12,16 @@ _With npm_
 then in your app:
 
 ```js
-var read-slice = require('read-slice')
+var slice = require('read-slice')
 ```
 
 ## API
 
-  - [slice()](#moduleexportsfilestringfromnumbertonumberencodingstring)
+  - [slice()](#slicefilestringfromnumbertonumber)
 
-### slice(file:String, from:Number, to:Number, [encoding]:String)
+### slice(file:String, from:Number, to:Number)
 
-  read a portion of `file`
+  read a portion of `file`. `slice` returns a [Result](//github.com/jkroso/result) though you can access the internal callback based implemenation as `slice.plain`
 
 ### Example
 
@@ -29,15 +29,14 @@ var read-slice = require('read-slice')
 
 ```js
 function head(file){
-	return slice(file, 0, 100)
+  slice(file, 0, 100).read(function(buffer){
+    console.log(buffer.toString('utf8'))
+  })
 }
 ```
 
 ## Running the tests
 
 ```bash
-$ npm install
 $ make test
 ```
-
-_Note: these commands don't work on windows._ 
