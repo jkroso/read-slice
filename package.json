@@ -1,18 +1,23 @@
 {
   "name": "read-slice",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "read part of a file",
-  "keywords": [],
+  "keywords": [
+    "readfile",
+    "slice",
+    "head",
+    "tail"
+  ],
   "author": "Jake Rosoman<jkroso@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/jkroso/read-slice.git"
   },
   "dependencies": {
-    "laissez-faire": "~0.12.4"
+    "resultify": "0.2.2"
   },
   "devDependencies": {
-    "mocha": "*",
-    "chai": "*"
+    "mocha": "1.11.0",
+    "chai": "1.7.0"
   }
 }

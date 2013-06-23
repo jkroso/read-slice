@@ -1,6 +1,9 @@
 
-var Promise = require('laissez-faire/full')
+var decorate = require('resultify')
 var fs = require('fs')
+
+module.exports = decorate(readSlice)
+module.exports.plain = readSlice
 
 /**
  * read a portion of `file`
@@ -8,23 +11,20 @@ var fs = require('fs')
  * @param {String} file
  * @param {Number} from
  * @param {Number} to
- * @param {String} [encoding]
- * @return {Promise<String|Buffer>}
+ * @param {Function} cb(error, buffer)
  */
 
-module.exports = function(file, from, to, encoding){
-	var promise = new Promise
+function readSlice(file, from, to, cb){
 	var len = to - from
 	var buf = new Buffer(len)
 	fs.open(file, 'r', function(e, fd){
-		if (e) return promise.error(e)
-		fs.read(fd, buf, 0, len, from, function(e, bytes, buf){
-			if (e) promise.error(e)
-			fs.close(fd, function(e){
-				if (e) return promise.error(e)
-				promise.write(buf.toString(encoding || 'utf8'))
+		if (e) cb(e)
+		else fs.read(fd, buf, 0, len, from, function(e, bytes, buf){
+			if (e) cb(e)
+			else fs.close(fd, function(e){
+				if (e) cb(e)
+				else cb(null, buf)
 			})
 		})
 	})
-	return promise
 }
