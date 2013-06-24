@@ -1,6 +1,6 @@
 {
   "name": "read-slice",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "read part of a file",
   "keywords": [
     "readfile",
@@ -14,7 +14,7 @@
     "url": "git://github.com/jkroso/read-slice.git"
   },
   "dependencies": {
-    "resultify": "0.2.2"
+    "resultify": "0.2.3"
   },
   "devDependencies": {
     "mocha": "1.11.0",
