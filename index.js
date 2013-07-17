@@ -20,9 +20,8 @@ function readSlice(file, from, to, cb){
 	fs.open(file, 'r', function(e, fd){
 		if (e) cb(e)
 		else fs.read(fd, buf, 0, len, from, function(e, bytes, buf){
-			if (e) cb(e)
-			else fs.close(fd, function(e){
-				if (e) cb(e)
+			fs.close(fd, function(e2){
+				if (e || e2) cb(e || e2)
 				else cb(null, buf)
 			})
 		})
