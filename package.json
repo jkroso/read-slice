@@ -1,6 +1,6 @@
 {
   "name": "read-slice",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "read part of a file",
   "keywords": [
     "readfile",
@@ -14,10 +14,11 @@
     "url": "git://github.com/jkroso/read-slice.git"
   },
   "dependencies": {
-    "resultify": "0.2.4"
+    "lift-result": "0.1.1"
   },
   "devDependencies": {
-    "mocha": "1.12.0",
+    "mocha": "1.12.1",
     "chai": "1.7.2"
-  }
+  },
+  "files": [ "index.js" ]
 }

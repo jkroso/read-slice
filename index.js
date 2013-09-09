@@ -1,20 +1,17 @@
 
-var decorate = require('resultify')
+var lift = require('lift-result/cps')
 var fs = require('fs')
-
-module.exports = decorate(readSlice)
-module.exports.plain = readSlice
 
 /**
  * read a portion of `file`
- * 
+ *
  * @param {String} file
  * @param {Number} from
  * @param {Number} to
  * @param {Function} cb(error, buffer)
  */
 
-function readSlice(file, from, to, cb){
+module.exports = lift(function(file, from, to, cb){
 	var len = to - from
 	var buf = new Buffer(len)
 	fs.open(file, 'r', function(e, fd){
@@ -26,4 +23,4 @@ function readSlice(file, from, to, cb){
 			})
 		})
 	})
-}
+})

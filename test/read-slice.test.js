@@ -1,6 +1,6 @@
 
 var chai = require('./chai')
-  , slice = require('..')
+var slice = require('..')
 
 describe('read-slice', function(){
 	it('should return a buffer', function(done){
